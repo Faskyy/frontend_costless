@@ -173,6 +173,7 @@ function MapComponent() {
           </div>
         </div>
       </div>
+      <div className="map-container">
       <div className="legend-container">
   <div className={`legend-item d-flex ${selectedCategory === null ? 'selected-category' : ''}`} onClick={() => setSelectedCategory(null)}>
     <div style={{ marginLeft: '37px' }} className="legend-item-text" onClick={() => setSelectedCategory(null)}>
@@ -284,8 +285,7 @@ function MapComponent() {
             </Popup>
             )}
       </Map>
-      
-
+      </div>
     </>
   );
 }
