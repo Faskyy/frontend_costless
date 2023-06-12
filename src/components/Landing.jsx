@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/1_nb.png'; // Update the path based on your project structure
-import '/Users/fahdksara/Desktop/frontend_costless/src/Landing.css';
 
 function LandingComponent() {
   const { loginWithRedirect } = useAuth0();
