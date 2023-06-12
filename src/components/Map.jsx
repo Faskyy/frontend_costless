@@ -64,7 +64,7 @@ function MapComponent() {
   };
 
   useEffect(() => {
-    fetch(process.env.REACT_APP_EVENTS_ENDPOINT)
+    fetch('https://costless.herokuapp.com/events')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok.');
