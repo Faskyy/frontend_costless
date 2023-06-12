@@ -12,7 +12,7 @@ function LandingComponent() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 600) {
-        setBackgroundSize('80%');
+        setBackgroundSize('50%');
         setBackgroundPosition('center bottom');
       } else {
         setBackgroundSize('50%');
