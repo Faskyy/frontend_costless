@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/1_nb.png'; // Update the path based on your project structure
-
+import '/Users/fahdksara/Desktop/frontend_costless/src/Landing.css';
 
 function LandingComponent() {
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
+  const [backgroundSize, setBackgroundSize] = useState('50%');
+  const [backgroundPosition, setBackgroundPosition] = useState('left bottom');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setBackgroundSize('90%');
+        setBackgroundPosition('center bottom');
+      } else {
+        setBackgroundSize('50%');
+        setBackgroundPosition('left bottom');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleLogin = () => {
     loginWithRedirect({
@@ -20,12 +41,11 @@ function LandingComponent() {
       style={{
         position: 'relative',
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: '40%', // Adjust the size as needed
+        backgroundSize: backgroundSize,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'left bottom',
+        backgroundPosition: backgroundPosition,
       }}
     >
-    
       <div className="text-center">
         <h1 className="display-4">Discover the city, Costless</h1>
         <p className="lead">Uncover free events and experiences in your city, today.</p>
@@ -43,4 +63,3 @@ function LandingComponent() {
 }
 
 export default LandingComponent;
-
