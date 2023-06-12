@@ -233,17 +233,55 @@ function MapComponent() {
         {renderMarkers()}
         {activeEvent && (
           <Popup
-            latitude={activeEvent.latitude}
-            longitude={activeEvent.longitude}
-            anchor="bottom"
-            onClose={() => setActiveEvent(null)}
-            focusAfterOpen={false}
-            className="custom-popup"
-          >
-            <div className="popup-content">
-            {/* ...popup content... */}
-            </div>
-          </Popup>
+    latitude={activeEvent.latitude}
+    longitude={activeEvent.longitude}
+    anchor="bottom"
+    onClose={() => setActiveEvent(null)}
+    focusAfterOpen={false}
+    className="custom-popup"
+  >
+    <div className="popup-content">
+    <div className="popup-title">
+        <a 
+            href={`https://www.google.com/search?q=${encodeURIComponent(`${activeEvent.name} ${activeEvent.address}`)}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{ color: "inherit", textDecoration: "none" }}
+        >
+            {activeEvent.name}
+        </a>
+        </div>
+      <br></br>
+      <div className="popup-body">
+        <div className="">
+          <div className="popup-item d-flex">
+            <span>
+              <FontAwesomeIcon icon={faCalendar} color="#444" />
+            </span>
+            <div>{activeEvent.date}</div>
+          </div>
+          <div className="popup-item d-flex">
+            <span>
+              <FontAwesomeIcon icon={faMapMarker} color="#444" />
+            </span>
+            <div>{activeEvent.address}</div>
+          </div>
+        </div>
+        <p>{activeEvent.description}</p>
+      </div>
+      {/* Add this part */}
+      <a 
+        href={`https://www.google.com/maps/search/?api=1&query=${activeEvent.latitude},${activeEvent.longitude}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="btn btn-primary"
+        style={{ fontSize: "0.8rem", padding: "5px 10px" }} // Adjust button size and font size here
+        >
+        <FontAwesomeIcon icon={faDirections} style={{ marginRight: "5px" }} /> {/* Adds space between icon and text */}
+        Open in Google Maps
+        </a>
+    </div>
+  </Popup>
         )}
         {currentLocation && (
           <Marker longitude={currentLocation.longitude} latitude={currentLocation.latitude}>
