@@ -12,7 +12,7 @@ function LandingComponent() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 600) {
-        setBackgroundSize('90%');
+        setBackgroundSize('80%');
         setBackgroundPosition('center bottom');
       } else {
         setBackgroundSize('50%');
@@ -25,6 +25,14 @@ function LandingComponent() {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'; // Disable scrolling on the body element
+
+    return () => {
+      document.body.style.overflow = 'auto'; // Enable scrolling on cleanup
     };
   }, []);
 
