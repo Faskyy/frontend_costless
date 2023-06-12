@@ -44,8 +44,18 @@ function MapComponent() {
 
   useEffect(() => {
     if (user && user.email_verified && !isToastDisplayedRef.current) {
-      const firstName = user.name.split(' ')[0];
-      toast.success(`Welcome, ${firstName}!`);
+      let displayName = user.name;
+      if (user.name) {
+        const nameParts = user.name.split(' ');
+        if (nameParts.length > 0) {
+          const firstName = nameParts[0];
+          displayName = firstName;
+        }
+      } else if (user.userName) {
+        displayName = user.userName;
+      }
+  
+      toast.success(`Welcome, ${displayName}!`);
       isToastDisplayedRef.current = true;
     }
   }, [user]);
@@ -271,15 +281,15 @@ function MapComponent() {
       </div>
       {/* Add this part */}
       <a 
-        href={`https://www.google.com/maps/search/?api=1&query=${activeEvent.latitude},${activeEvent.longitude}`} 
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activeEvent.address.replace(/ /g, '+'))}`}
         target="_blank" 
         rel="noopener noreferrer"
         className="btn btn-primary"
         style={{ fontSize: "0.8rem", padding: "5px 10px" }} // Adjust button size and font size here
-        >
+      >
         <FontAwesomeIcon icon={faDirections} style={{ marginRight: "5px" }} /> {/* Adds space between icon and text */}
         Open in Google Maps
-        </a>
+      </a>
     </div>
   </Popup>
         )}
