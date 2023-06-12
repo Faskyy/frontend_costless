@@ -13,7 +13,7 @@ function LandingComponent() {
     const handleResize = () => {
       if (window.innerWidth <= 600) {
         setBackgroundSize('50%');
-        setBackgroundPosition('center bottom');
+        setBackgroundPosition('center 20%'); // Move the image slightly more to the top
       } else {
         setBackgroundSize('50%');
         setBackgroundPosition('left bottom');
