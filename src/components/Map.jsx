@@ -23,14 +23,14 @@ function MapComponent() {
   const [isLegendVisible, setLegendVisible] = useState(window.innerWidth > 600);
   const [isButtonPressed, setButtonPressed] = useState(false);
 
-  
+
   useEffect(() => {
     const handleResize = () => {
       setLegendVisible(window.innerWidth > 600);
     }
 
     window.addEventListener('resize', handleResize);
-    
+
     // Clean up event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -54,7 +54,7 @@ function MapComponent() {
       } else if (user.userName) {
         displayName = user.userName;
       }
-  
+
       toast.success(`Welcome, ${displayName}!`);
       isToastDisplayedRef.current = true;
     }
@@ -122,11 +122,9 @@ function MapComponent() {
     return eventsData.map((item, i) => {
 
       if (isNaN(item.longitude) || isNaN(item.latitude)) {
-        return null; 
+        return null;
       }
 
-      
-      
       let index = categoryValue.indexOf(item.activity_type);
       let colorClass;
       if (index < 3) {
@@ -186,6 +184,19 @@ function MapComponent() {
 
   const currentDate = new Date().toLocaleString();
 
+  const getFirstSentence = (description) => {
+    const sentences = description.split(". ");
+    return sentences[0] + ".";
+  };
+
+  const redirectToGoogleMaps = () => {
+    const { name, address } = activeEvent;
+    const encodedName = encodeURIComponent(name);
+    const encodedAddress = encodeURIComponent(address);
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodedName}+${encodedAddress}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <>
       <div className="intro-container">
@@ -200,36 +211,36 @@ function MapComponent() {
       </div>
 
       <div className="legend-wrapper">
-      <button
-        className={`legend-toggle btn ${isButtonPressed ? "btn-pressed" : "btn-primary"}`}
-        onClick={() => {
-          setLegendVisible(!isLegendVisible);
-          setButtonPressed(!isButtonPressed);
-        }}
-      >
-        <FontAwesomeIcon icon={faFilter} /> 
-      </button>
+        <button
+          className={`legend-toggle btn ${isButtonPressed ? 'btn-pressed' : 'btn-primary'}`}
+          onClick={() => {
+            setLegendVisible(!isLegendVisible);
+            setButtonPressed(!isButtonPressed);
+          }}
+        >
+          <FontAwesomeIcon icon={faFilter} />
+        </button>
 
         {isLegendVisible && (
-            <div className="legend-container">
-                <div className={`legend-item d-flex ${selectedCategory === null ? 'selected-category' : ''}`} onClick={() => setSelectedCategory(null)}>
-                    <div style={{ marginLeft: '37px' }} className="legend-item-text" onClick={() => setSelectedCategory(null)}>
-                        View All
-                    </div>
-                </div>
-                <div className="legend-list">
-                    {categoryValue.map((category, i) => (
-                        <div
-                            className={`legend-item d-flex ${selectedCategory === category ? 'selected-category' : ''}`}
-                            key={i}
-                            onClick={() => setSelectedCategory(category)}
-                        >
-                            <img src={`./icons/png/fahdksara_${category}.png`} alt="" height={22} />
-                            <div>{category}</div>
-                        </div>
-                    ))}
-                </div>
+          <div className="legend-container">
+            <div className={`legend-item d-flex ${selectedCategory === null ? 'selected-category' : ''}`} onClick={() => setSelectedCategory(null)}>
+              <div style={{ marginLeft: '37px' }} className="legend-item-text" onClick={() => setSelectedCategory(null)}>
+                View All
+              </div>
             </div>
+            <div className="legend-list">
+              {categoryValue.map((category, i) => (
+                <div
+                  className={`legend-item d-flex ${selectedCategory === category ? 'selected-category' : ''}`}
+                  key={i}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  <img src={`./icons/png/fahdksara_${category}.png`} alt="" height={22} />
+                  <div>{category}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
 
@@ -243,56 +254,55 @@ function MapComponent() {
         {renderMarkers()}
         {activeEvent && (
           <Popup
-    latitude={activeEvent.latitude}
-    longitude={activeEvent.longitude}
-    anchor="bottom"
-    onClose={() => setActiveEvent(null)}
-    focusAfterOpen={false}
-    className="custom-popup"
-  >
-    <div className="popup-content">
-    <div className="popup-title">
-        <a 
-            href={`https://www.google.com/search?q=${encodeURIComponent(`${activeEvent.name} ${activeEvent.address}`)}`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            style={{ color: "inherit", textDecoration: "none" }}
-        >
-            {activeEvent.name}
-        </a>
-        </div>
-      <br></br>
-      <div className="popup-body">
-        <div className="">
-          <div className="popup-item d-flex">
-            <span>
-              <FontAwesomeIcon icon={faCalendar} color="#444" />
-            </span>
-            <div>{activeEvent.date}</div>
-          </div>
-          <div className="popup-item d-flex">
-            <span>
-              <FontAwesomeIcon icon={faMapMarker} color="#444" />
-            </span>
-            <div>{activeEvent.address}</div>
-          </div>
-        </div>
-        <p>{activeEvent.description}</p>
-      </div>
-      {/* Add this part */}
-      <a 
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activeEvent.address.replace(/ /g, '+'))}`}
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="btn btn-primary"
-        style={{ fontSize: "0.8rem", padding: "5px 10px" }} // Adjust button size and font size here
-      >
-        <FontAwesomeIcon icon={faDirections} style={{ marginRight: "5px" }} /> {/* Adds space between icon and text */}
-        Open in Google Maps
-      </a>
-    </div>
-  </Popup>
+            latitude={activeEvent.latitude}
+            longitude={activeEvent.longitude}
+            anchor="bottom"
+            onClose={() => setActiveEvent(null)}
+            focusAfterOpen={false}
+            className="custom-popup"
+          >
+            <div className="popup-content">
+              <div className="popup-title">
+                <a
+                  href={`https://www.google.com/search?q=${encodeURIComponent(`${activeEvent.name} ${activeEvent.address}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  {activeEvent.name}
+                </a>
+              </div>
+              <br></br>
+              <div className="popup-body">
+                <div className="">
+                  <div className="popup-item d-flex">
+                    <span>
+                      <FontAwesomeIcon icon={faCalendar} color="#444" />
+                    </span>
+                    <div>{activeEvent.date}</div>
+                  </div>
+                  <div className="popup-item d-flex">
+                    <span>
+                      <FontAwesomeIcon icon={faMapMarker} color="#444" />
+                    </span>
+                    <div>{activeEvent.address}</div>
+                  </div>
+                </div>
+                <p>{getFirstSentence(activeEvent.description)}</p> {/* Only display the first sentence */}
+              </div>
+              {/* Modify this part */}
+              <button
+                className="btn btn-primary"
+                onClick={redirectToGoogleMaps}
+                style={{ fontSize: "0.8rem", padding: "5px 10px" }} // Adjust button size and font size here
+              >
+                <FontAwesomeIcon icon={faDirections} style={{ marginRight: "5px" }} /> {/* Adds space between icon and text */}
+                Open in Google Maps
+              </button>
+            </div>
+          </Popup>
         )}
+
         {currentLocation && (
           <Marker longitude={currentLocation.longitude} latitude={currentLocation.latitude}>
             <div className="current-location-marker" onClick={() => setShowCurrentLocationPopup(true)}>

@@ -65,6 +65,19 @@ function LandingComponent() {
           Email us at <a href="mailto:hello@costless.app">hello@costless.app</a> for any inquiries or suggestions.
         </p>
       </div>
+
+      {/* Footer */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '1rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          color: 'gray',
+        }}
+      >
+        Created with ❤
+      </div>
     </div>
   );
 }
