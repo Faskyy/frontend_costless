@@ -66,7 +66,7 @@ function LandingComponent() {
         </p>
       </div>
 
-      {/* Footer */}
+  {/* Footer */}
       <div
         style={{
           position: 'absolute',
@@ -76,7 +76,10 @@ function LandingComponent() {
           color: 'gray',
         }}
       >
-        Created with ❤
+        <a href="src/assets/costless_privacy.pdf" style={{ textDecoration: 'none', color: 'gray' }}>
+          Privacy
+        </a>{' '}
+        | Created with ❤
       </div>
     </div>
   );
