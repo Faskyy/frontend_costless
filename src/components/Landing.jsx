@@ -42,6 +42,10 @@ function LandingComponent() {
     });
   };
 
+  const handlePrivacyClick = () => {
+    navigate('/privacy');
+  };
+
   return (
     <div
       className="d-flex justify-content-center align-items-center vh-100"
@@ -66,19 +70,19 @@ function LandingComponent() {
         </p>
       </div>
 
-  {/* Footer */}
+      {/* Footer */}
       <div
         style={{
           position: 'absolute',
-          bottom: '1rem',
+          bottom: '5rem',
           left: '50%',
           transform: 'translateX(-50%)',
           color: 'gray',
         }}
       >
-        <a href="src/assets/costless_privacy.pdf" style={{ textDecoration: 'none', color: 'gray' }}>
+        <button onClick={handlePrivacyClick} style={{ textDecoration: 'none', color: 'gray', border: 'none', background: 'none', cursor: 'pointer' }}>
           Privacy
-        </a>{' '}
+        </button>{' '}
         | Created with ❤
       </div>
     </div>

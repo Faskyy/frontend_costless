@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MapComponent from './components/Map';
 import LandingComponent from './components/Landing';
 import './App.css';
+import PrivacyComponent from './components/Privacy';
 
 function App() {
   console.log("Redirect URI:", `${window.location.origin}/map`);
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingComponent />} />
           <Route path="/map" element={<MapComponent />} />
+          <Route path="/privacy" element={<PrivacyComponent />} />
         </Routes>
       </Router>
       <ToastContainer position="top-center"/>
