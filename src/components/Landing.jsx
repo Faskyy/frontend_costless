@@ -74,7 +74,7 @@ function LandingComponent() {
       <div
         style={{
           position: 'absolute',
-          bottom: '5rem',
+          bottom: '7rem',
           left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex',
