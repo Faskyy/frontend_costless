@@ -74,7 +74,7 @@ function Privacy() {
         <h2 style={{ fontSize: '18px', marginBottom: '8px', fontWeight: 'bold' }}>5. Your Choices and Rights</h2>
         <p style={{ marginBottom: '16px' }}>
           <strong>5.1 Access, Correct, and Delete:</strong> You have the right to access, correct, or delete your personal information.
-          You can manage your account settings or contact us at hello@costless.app to request access to your information or make any necessary changes.
+          You can manage your account settings or contact us at <strong>hello@costless.app</strong> to request access to your information or make any necessary changes.
         </p>
         <h2 style={{ fontSize: '18px', marginBottom: '8px', fontWeight: 'bold' }}>6. Changes to this Privacy Policy</h2>
         <p style={{ marginBottom: '16px' }}>
@@ -83,7 +83,7 @@ function Privacy() {
         </p>
         <h2 style={{ fontSize: '18px', marginBottom: '8px', fontWeight: 'bold' }}>7. Contact Us</h2>
         <p style={{ marginBottom: '16px' }}>
-          If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact us at hello@costless.app
+          If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact us at <strong>hello@costless.app</strong>
         </p>
       </div>
     </div>
