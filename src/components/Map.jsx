@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Map.css'; 
 
 function MapComponent() {
   const [activeEvent, setActiveEvent] = useState(null);
