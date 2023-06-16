@@ -77,13 +77,16 @@ function LandingComponent() {
           bottom: '5rem',
           left: '50%',
           transform: 'translateX(-50%)',
+          display: 'flex',
+          alignItems: 'center',
           color: 'gray',
         }}
       >
         <button onClick={handlePrivacyClick} style={{ textDecoration: 'none', color: 'gray', border: 'none', background: 'none', cursor: 'pointer' }}>
           Privacy
         </button>
-        | Created with ❤
+        <span style={{ margin: '0 0.5rem' }}>|</span>
+        <span>Created with ❤</span>
       </div>
     </div>
   );
