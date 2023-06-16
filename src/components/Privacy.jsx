@@ -8,15 +8,22 @@ function Privacy() {
     <div
       style={{
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        height: '100vh',
+        minHeight: '100vh',
         fontFamily: 'Arial, sans-serif',
         fontSize: '12px',
         textAlign: 'center',
         backgroundColor: 'grey',
       }}
     >
+    <br />
+      <Link to="/" style={{ textDecoration: 'none', marginBottom: '16px', position: 'sticky', top: '16px', zIndex: '1' }}>
+        <button className="btn btn-light btn-sm">
+          <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: '8px' }} />Back
+        </button>
+      </Link>
       <div
         style={{
           maxWidth: '800px',
@@ -24,13 +31,10 @@ function Privacy() {
           backgroundColor: 'white',
           padding: '70px',
           borderRadius: '4px',
+          overflowY: 'auto',
+          maxHeight: 'calc(100vh - 100px)', // Adjust the value based on your needs
         }}
       >
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <button className="btn btn-light btn-sm" style={{ position: 'absolute', top: '16px', left: '16px' }}>
-            <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: '8px' }} />Back
-          </button>
-        </Link>
         <h1 style={{ fontSize: '24px', marginBottom: '16px', fontWeight: 'bold' }}>Privacy Policy</h1>
         <p style={{ marginBottom: '16px' }}>
           <strong>Effective Date:</strong> June 16, 2023
