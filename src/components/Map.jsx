@@ -87,7 +87,7 @@ function MapComponent() {
       .catch((error) => {
         console.error('Error:', error);
         if (!isToastDisplayedRef.current) {
-          toast.error('Data temporarily unavailable 😔 We promise to be back soon!', {
+          toast.error('Data is temporarily unavailable 😔 We promise to be back soon!', {
             position: 'top-center',
             autoClose: 50000,
             hideProgressBar: false,
@@ -279,7 +279,7 @@ function MapComponent() {
                     <span>
                       <FontAwesomeIcon icon={faCalendar} color="#444" />
                     </span>
-                    <div>{activeEvent.date}</div>
+                    <div>{activeEvent.date.replace(/&commat;/g, '@').replace(/&comma;/g, '@').replace(/@commat/g, '@')}</div>
                   </div>
                   <div className="popup-item d-flex">
                     <span>
@@ -287,6 +287,7 @@ function MapComponent() {
                     </span>
                     <div>{activeEvent.address}</div>
                   </div>
+                  <br />
                 </div>
                 <p>{getFirstSentence(activeEvent.description)}</p> {/* Only display the first sentence */}
               </div>
