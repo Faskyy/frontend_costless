@@ -57,7 +57,7 @@ function LandingComponent() {
         <h1 className="display-4">Discover the city, Costless</h1>
         <p className="lead">Uncover free events and experiences in your city, today.</p>
         <button onClick={handleLogin} className="btn btn-primary mt-3">
-          Start Exploring!
+          Start Exploring! 🚀
         </button>
         <br />
         <br />
