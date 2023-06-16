@@ -78,6 +78,7 @@ function LandingComponent() {
           left: '50%',
           transform: 'translateX(-50%)',
           color: 'gray',
+          width: '100%'
         }}
       >
         <button onClick={handlePrivacyClick} style={{ textDecoration: 'none', color: 'gray', border: 'none', background: 'none', cursor: 'pointer' }}>
