@@ -80,6 +80,8 @@ function LandingComponent() {
           display: 'flex',
           alignItems: 'center',
           color: 'gray',
+          justifyContent: 'center',
+          width: '100%',
         }}
       >
         <button onClick={handlePrivacyClick} style={{ textDecoration: 'none', color: 'gray', border: 'none', background: 'none', cursor: 'pointer' }}>
