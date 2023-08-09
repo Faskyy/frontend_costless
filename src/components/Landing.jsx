@@ -85,10 +85,8 @@ function LandingComponent() {
         }}
       >
         <button onClick={handlePrivacyClick} style={{ textDecoration: 'none', color: 'gray', border: 'none', background: 'none', cursor: 'pointer' }}>
-          Privacy
+          Privacy Policy
         </button>
-        <span style={{ margin: '0 0.5rem' }}>|</span>
-        <span>Created with ❤</span>
       </div>
     </div>
   );
